@@ -106,7 +106,10 @@ scissors_div.addEventListener('click', function(){
 main();
 
 function refreshPage() {
-    window.location.reload(true);
+    playerScore = 0;
+    pcScore = 0;
+    playerScore_div.innerHTML = playerScore;
+    pcScore_div.innerHTML = pcScore;
 }
 
 function isGameOver() {
