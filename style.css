@@ -1,0 +1,11 @@
+.winner {
+    border-color: aquamarine;
+}
+
+.loser {
+ border-color: brown;
+}
+
+.draw {
+    border-color:burlywood;
+}
