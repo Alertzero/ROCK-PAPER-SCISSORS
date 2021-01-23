@@ -6,6 +6,7 @@ let result_div = document.getElementById("result");
 let rock_div = document.getElementById("r");
 let paper_div = document.getElementById("p");
 let scissors_div = document.getElementById("s");
+let reset = document.getElementById("reset");
 
 
 function getPCChoice(){
@@ -21,11 +22,16 @@ return "Scissors";
 }
 
 function win(userChoice, pcChoice){
+
     playerScore++;
     playerScore_div.innerHTML = playerScore;
     pcScore_div.innerHTML = pcScore;
     result_div.innerHTML = "WIN"
-    document.getElementById(userChoice).classList.add('winner');
+    document.getElementById(userChoice).classList.add('bg-success');
+    setTimeout(()=>{document.getElementById(userChoice).classList.remove('bg-success');}, "100")
+    result_div.classList.add('bg-success');
+    setTimeout(()=>{result_div.classList.remove('bg-success');}, "100")
+    declareWinner()
 }
 
 function lose(userChoice, pcChoice){
@@ -33,12 +39,20 @@ function lose(userChoice, pcChoice){
     playerScore_div.innerHTML = playerScore;
     pcScore_div.innerHTML = pcScore;
     result_div.innerHTML = "LOST";
-    document.getElementById(userChoice).classList.add('loser');
+    document.getElementById(userChoice).classList.add('bg-danger');
+    setTimeout(()=>{document.getElementById(userChoice).classList.remove('bg-danger');}, "100")
+    result_div.classList.add('bg-danger');
+    setTimeout(()=>{result_div.classList.remove('bg-danger');}, "100")
+    declareWinner()
 }
 
 function draw(userChoice, pcChoice){
     result_div.innerHTML = "EQUAL";
-    document.getElementById(userChoice).classList.add('draw');
+    document.getElementById(userChoice).classList.add('bg-primary');
+    setTimeout(()=>{document.getElementById(userChoice).classList.remove('bg-primary');}, "100")
+    result_div.classList.add('bg-primary');
+    setTimeout(()=>{result_div.classList.remove('bg-primary');}, "100")
+    declareWinner()
 }
 
 function game(userChoice){
@@ -65,19 +79,39 @@ function game(userChoice){
 
 function main(){
 rock_div.addEventListener('click', function(){
-    rock_div.style.backgroundColor == "rgb(244,113,33)"
+    if (isGameOver()) {
+        alert("Game over, click reset button to play again");
+        return;
+    }
     game('r');
 })
 
 paper_div.addEventListener('click', function(){
-    rock_div.style.backgroundColor == "rgb(244,113,33)"
+    if (isGameOver()) {
+        alert("Game over, click reset button to play again");
+        return;
+    }
     game('p');
 })
 
 scissors_div.addEventListener('click', function(){
-    rock_div.style.backgroundColor == "rgb(244,113,33)"
+    if (isGameOver()) {
+        alert("Game over, click reset button to play again");
+        return;
+    }
     game('s');
 })
 }
 
 main();
+
+function refreshPage() {
+    window.location.reload(true);
+}
+
+function isGameOver() {
+    return playerScore === 5 || pcScore === 5;
+  }
+
+
+  reset.addEventListener('click', refreshPage);
