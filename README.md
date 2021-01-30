@@ -4,7 +4,10 @@ This website is made as part of the odin project curriculum
 
 # Learning Experience
 
-<ul><li>Javascript focusing on DOM</li></ul>
+<ul>
+  <li>Html</li>
+  <li>Javascript focusing on DOM</li>
+</ul>
 
 # Live Demo
 
